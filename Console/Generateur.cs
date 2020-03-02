@@ -138,10 +138,16 @@ namespace ConsoleApp
         public List<Chemin> Elite(List<Chemin> chemins, int nbElite)
         {
 
-            for (int i = chemins.Count; i < chemins.Count; i--) {
-                    if (chemins[i].Equals(chemins[i - 1]))
-                        chemins.RemoveAt(i);
-                        }
+            for (int i = 0; i <= chemins.Count - 1; i++)
+            {
+                for (int j = i + 1; j < chemins.Count; j++)
+                {
+                    if (chemins[i].Equals(chemins[j]))
+                    {
+                        chemins.Remove(chemins[j]);
+                    }
+                }
+            }
             return chemins.OrderBy(chemin => chemin.Score).Take(nbElite).ToList();
         }
 
